@@ -1,9 +1,30 @@
 import { createStore } from 'redux';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   counter: 0,
   showCounter: true,
 };
+
+// 리덕스 툴킷 적용
+createSlice({
+  name: 'counter',
+  initialState,
+  reducers: {
+    increment(state) {
+      state.counter++;
+    },
+    decrement(state) {
+      state.counter--;
+    },
+    increase(state, action) {
+      state.counter = state.counter + action.amount;
+    },
+    toggleCounter(state) {
+      state.showCounter = !state.showCounter;
+    },
+  },
+});
 
 // reducer 생성
 const counterReducer = (state = initialState, action) => {
