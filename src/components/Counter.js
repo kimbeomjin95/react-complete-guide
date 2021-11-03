@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import classes from './Counter.module.css';
+import { countAction } from '../store/index';
 
 // useSelector: 스토어에 관리되는 데이터에 엑세스
 
@@ -11,21 +12,19 @@ const Counter = () => {
   const dispatch = useDispatch();
 
   const toggleCounterHandler = () => {
-    dispatch({
-      type: 'toggle',
-    });
+    dispatch(countAction.toggleCounter());
   };
 
   const incrementHandler = () => {
-    dispatch({ type: 'increment' });
+    dispatch(countAction.increment());
   };
 
   const decrementHandler = () => {
-    dispatch({ type: 'decrement' });
+    dispatch(countAction.decrement());
   };
 
   const increaseHandler = () => {
-    dispatch({ type: 'increase', amount: 5 });
+    dispatch(countAction.increase(10));
   };
 
   return (
