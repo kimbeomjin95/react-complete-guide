@@ -6,8 +6,8 @@ import { countAction } from '../store/index';
 
 const Counter = () => {
   // 리액트 리덕스에 의해 실행됨
-  const counter = useSelector((state) => state.counter);
-  const show = useSelector((state) => state.showCounter); // 여러 useSelector를 이용하여 다른 상태값을 가져올 수 있음
+  const counter = useSelector((state) => state.counter.counter); // 실제 initialState에 접근
+  const show = useSelector((state) => state.counter.showCounter); // 여러 useSelector를 이용하여 다른 상태값을 가져올 수 있음
   // console.log('counter', counter);
   const dispatch = useDispatch();
 
