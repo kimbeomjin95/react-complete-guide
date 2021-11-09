@@ -5,13 +5,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import store from './store';
-import Counter from './components/Counter';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      {/*<App />*/}
-      <Counter />
+      <App />
     </Provider>
   </React.StrictMode>,
 
