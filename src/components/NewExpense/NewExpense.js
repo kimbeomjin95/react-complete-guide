@@ -2,10 +2,18 @@ import React from 'react'; // JSX가 큰 틀에서 이 리액트 라이브러리
 import './NewExpense.css';
 import ExpenseForm from './ExpenseForm';
 
-const NewExpense = () => {
+const NewExpense = ({ onAddExpense }) => {
+  const saveExpenseDataHandler = (enteredExpenseData) => {
+    const expenseData = {
+      ...enteredExpenseData,
+      id: Math.random().toString(),
+    };
+    onAddExpense(expenseData);
+  };
+
   return (
     <div className="new-expense">
-      <ExpenseForm />
+      <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
     </div>
   );
 };
