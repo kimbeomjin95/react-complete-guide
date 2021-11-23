@@ -12,6 +12,13 @@ const Expenses = ({ items }) => {
     setFilteredYear(selectedYear);
   };
 
+  // filter: 원본 배열은 그대로
+  const filteredExpenses = _.filter(
+    items,
+    (expense) => expense.date.getFullYear().toString() === filteredYear,
+  );
+  // };
+
   /*
    * TODO
    * 1) ExpenseFilter에서 Expense 컴포넌트로 state 올리기
@@ -24,7 +31,7 @@ const Expenses = ({ items }) => {
         selected={filteredYear}
         onChangeFilter={filterChangeHandler}
       />
-      {_.map(items, (expense) => (
+      {_.map(filteredExpenses, (expense) => (
         <ExpenseItem
           key={expense.id}
           title={expense.title}
