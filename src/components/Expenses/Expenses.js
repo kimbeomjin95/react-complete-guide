@@ -12,34 +12,30 @@ const Expenses = ({ items }) => {
     setFilteredYear(selectedYear);
   };
 
-  // filter: 원본 배열은 그대로
   const filteredExpenses = _.filter(
     items,
     (expense) => expense.date.getFullYear().toString() === filteredYear,
   );
-  // };
 
-  /*
-   * TODO
-   * 1) ExpenseFilter에서 Expense 컴포넌트로 state 올리기
-   * 2) Expense 컴포넌트안에서 state로 저장
-   * 3) 변경된 이벤트를 수신하고 데이터를 더 높은 레벨의 컴포넌트로 포워드 필요.
-   * */
+  let expensesContent = <p>No expenses found.</p>;
+  if (filteredExpenses.length > 0) {
+    expensesContent = _.map(filteredExpenses, (expense) => (
+      <ExpenseItem
+        key={expense.id}
+        title={expense.title}
+        amount={expense.amount}
+        date={expense.date}
+      />
+    ));
+  }
+
   return (
     <Card className="expenses">
       <ExpenseFilter
         selected={filteredYear}
         onChangeFilter={filterChangeHandler}
       />
-      {_.map(filteredExpenses, (expense) => (
-        <ExpenseItem
-          key={expense.id}
-          title={expense.title}
-          amount={expense.amount}
-          date={expense.date}
-        />
-      ))}
-      {/*/>*/}
+      {expensesContent}
     </Card>
   );
 };
