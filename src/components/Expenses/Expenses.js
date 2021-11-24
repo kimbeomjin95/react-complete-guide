@@ -7,7 +7,7 @@ import _ from 'lodash';
 import ExpenseList from './ExpensesList';
 
 const Expenses = ({ items }) => {
-  const [filteredYear, setFilteredYear] = useState('2020');
+  const [filteredYear, setFilteredYear] = useState('2021');
 
   const filterChangeHandler = (selectedYear) => {
     setFilteredYear(selectedYear);
